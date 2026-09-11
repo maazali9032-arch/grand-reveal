@@ -1,0 +1,294 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * Luxury architectural wedding invitation design system.
+ * Ivory / cream / champagne-gold. All colors in oklch.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  /* Invitation palette */
+  --color-ivory: var(--ivory);
+  --color-cream: var(--cream);
+  --color-beige: var(--beige);
+  --color-champagne: var(--champagne);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+
+  --font-display: "Italiana", "Cormorant Garamond", serif;
+  --font-serif: "Cormorant Garamond", "Noto Serif Devanagari", "Noto Serif Telugu", serif;
+  --font-script: "Pinyon Script", "Cormorant Garamond", cursive;
+
+  --shadow-emboss: 0 1px 0 oklch(1 0 0 / 0.8), 0 -1px 0 oklch(0.62 0.06 74 / 0.14);
+  --shadow-paper:
+    0 30px 60px -25px oklch(0.45 0.05 70 / 0.35), 0 8px 24px -12px oklch(0.45 0.05 70 / 0.25);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  --ivory: oklch(0.974 0.011 86);
+  --cream: oklch(0.947 0.019 84);
+  --beige: oklch(0.902 0.027 80);
+  --champagne: oklch(0.862 0.048 82);
+  --gold: oklch(0.723 0.088 78);
+  --gold-deep: oklch(0.575 0.078 70);
+  --ink: oklch(0.322 0.019 62);
+  --ink-soft: oklch(0.492 0.021 66);
+
+  --background: var(--ivory);
+  --foreground: var(--ink);
+  --card: var(--cream);
+  --card-foreground: var(--ink);
+  --popover: var(--cream);
+  --popover-foreground: var(--ink);
+  --primary: var(--gold-deep);
+  --primary-foreground: var(--ivory);
+  --secondary: var(--beige);
+  --secondary-foreground: var(--ink);
+  --muted: var(--cream);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--champagne);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.55 0.15 28);
+  --destructive-foreground: var(--ivory);
+  --border: oklch(0.855 0.032 80);
+  --input: oklch(0.855 0.032 80);
+  --ring: var(--gold);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-serif);
+  }
+
+  ::selection {
+    background: oklch(0.862 0.048 82 / 0.6);
+  }
+}
+
+/* ---------- Typography utilities ---------- */
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+@utility font-script {
+  font-family: var(--font-script);
+}
+
+@utility tracking-luxe {
+  letter-spacing: 0.34em;
+}
+
+@utility tracking-wide-luxe {
+  letter-spacing: 0.18em;
+}
+
+@utility text-gilded {
+  background-image: linear-gradient(
+    100deg,
+    oklch(0.6 0.07 70),
+    oklch(0.82 0.09 86),
+    oklch(0.66 0.085 74),
+    oklch(0.88 0.06 90),
+    oklch(0.6 0.07 70)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Surfaces & ornament ---------- */
+
+@utility paper {
+  background-image:
+    radial-gradient(120% 90% at 50% 0%, oklch(1 0 0 / 0.75), transparent 60%),
+    linear-gradient(160deg, var(--cream), var(--ivory) 45%, var(--beige));
+  background-color: var(--ivory);
+}
+
+@utility paper-grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image:
+      repeating-linear-gradient(
+        58deg,
+        oklch(0.62 0.06 74 / 0.045) 0 1px,
+        transparent 1px 4px
+      ),
+      repeating-linear-gradient(
+        -58deg,
+        oklch(0.62 0.06 74 / 0.035) 0 1px,
+        transparent 1px 5px
+      );
+  }
+}
+
+@utility gold-hairline {
+  border: 1px solid transparent;
+  border-image: linear-gradient(
+      140deg,
+      oklch(0.78 0.075 82 / 0.9),
+      oklch(0.93 0.04 88 / 0.5),
+      oklch(0.68 0.08 74 / 0.85)
+    )
+    1;
+}
+
+@utility emboss {
+  box-shadow: var(--shadow-emboss);
+}
+
+@utility damask {
+  background-image:
+    radial-gradient(circle at 12% 18%, oklch(0.72 0.088 78 / 0.1) 0 2px, transparent 3px),
+    radial-gradient(circle at 62% 42%, oklch(0.72 0.088 78 / 0.08) 0 2px, transparent 3px),
+    radial-gradient(circle at 36% 78%, oklch(0.72 0.088 78 / 0.09) 0 2px, transparent 3px),
+    radial-gradient(circle at 86% 88%, oklch(0.72 0.088 78 / 0.07) 0 2px, transparent 3px);
+  background-size: 84px 84px;
+}
+
+@utility warm-glow {
+  box-shadow:
+    0 0 60px oklch(0.86 0.09 84 / 0.55),
+    0 0 160px oklch(0.8 0.1 80 / 0.35);
+}
+
+/* ---------- Reveal choreography (reversible) ---------- */
+
+@utility stage-veil {
+  opacity: 0;
+  transform: translateY(34px) scale(0.975);
+  filter: blur(6px);
+  transition:
+    opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--veil-delay, 0ms);
+}
+
+@utility stage-veil-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+@utility mask-rise {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--veil-delay, 0ms);
+}
+
+@utility mask-rise-in {
+  clip-path: inset(0 0 0 0);
+}
+
+@keyframes seal-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 6px 14px oklch(0.55 0.07 70 / 0.35));
+  }
+  50% {
+    transform: scale(1.025);
+    filter: drop-shadow(0 10px 22px oklch(0.55 0.07 70 / 0.45));
+  }
+}
+
+@keyframes hint-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@utility seal-breathe {
+  animation: seal-breathe 5.5s ease-in-out infinite;
+}
+
+@utility hint-drift {
+  animation: hint-drift 2.6s ease-in-out infinite;
+}
+
+@utility shimmer {
+  background-size: 200% auto;
+  animation: shimmer-sweep 7s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seal-breathe,
+  .hint-drift,
+  .shimmer {
+    animation: none;
+  }
+  .stage-veil {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .mask-rise {
+    clip-path: none;
+  }
+}
