@@ -264,6 +264,15 @@
   }
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @utility seal-breathe {
   animation: seal-breathe 5.5s ease-in-out infinite;
 }
@@ -275,6 +284,10 @@
 @utility shimmer {
   background-size: 200% auto;
   animation: shimmer-sweep 7s linear infinite;
+}
+
+@utility animate-marquee {
+  animation: marquee 20s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

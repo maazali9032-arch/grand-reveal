@@ -121,5 +121,5 @@ function InvitationRoute() {
   }
   if (result.state === "fallback") return <FallbackScreen shop={result.shop} />;
 
-  return <InvitationExperience invitation={result.invitation} />;
+  return <InvitationExperience invitation={result.invitation} shop={result.shop} />;
 }

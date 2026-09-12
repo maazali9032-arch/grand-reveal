@@ -14,6 +14,7 @@ import { ContactSocial } from "./ContactSocial";
 import { MusicControl } from "./MusicControl";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Divider, SealMonogram } from "./Ornaments";
+import { BrandShowcase } from "./BrandShowcase";
 
 /** Continuous architectural backdrop with slow parallax drift. */
 function Backdrop() {
@@ -96,7 +97,7 @@ function FinalNote({ invitation, lang }: { invitation: Invitation; lang: Lang })
   );
 }
 
-export function InvitationExperience({ invitation }: { invitation: Invitation }) {
+export function InvitationExperience({ invitation, shop }: { invitation: Invitation; shop?: import("@/lib/invitation-types").ShopFallback }) {
   const [lang, setLang] = useState<Lang>("en");
   const initials = `${invitation.groomName.trim()[0] ?? ""}${invitation.brideName.trim()[0] ?? ""}`;
 
@@ -130,6 +131,7 @@ export function InvitationExperience({ invitation }: { invitation: Invitation })
       <Rsvp lang={lang} initials={initials || "✦"} />
       <ContactSocial contacts={invitation.contacts} lang={lang} />
       <FinalNote invitation={invitation} lang={lang} />
+      <BrandShowcase shop={shop} />
     </main>
   );
 }

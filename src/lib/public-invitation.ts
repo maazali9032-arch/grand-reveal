@@ -298,8 +298,9 @@ export async function fetchPublicInvitation(slugInput: string): Promise<Invitati
   const state = str(payload["state"]);
   if (state === "live") {
     const invitation = mapInvitation(slug, payload);
+    const shop = mapShop(payload);
     if (!invitation.groomName && !invitation.brideName) return { state: "not_found" };
-    return { state: "live", invitation };
+    return { state: "live", invitation, shop };
   }
   if (state === "fallback") {
     const shop = mapShop(payload);

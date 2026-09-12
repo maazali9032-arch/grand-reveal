@@ -96,7 +96,7 @@ export type ShopFallback = {
 };
 
 export type InvitationResult =
-  | { state: "live"; invitation: Invitation }
+  | { state: "live"; invitation: Invitation; shop?: ShopFallback }
   | { state: "fallback"; shop?: ShopFallback }
   | { state: "not_found" };
 
