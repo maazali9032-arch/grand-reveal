@@ -50,9 +50,14 @@ function Backdrop() {
           alt=""
           width={1536}
           height={1024}
-          className="absolute inset-0 h-[118%] w-full object-cover object-top opacity-[0.22]"
-          style={{ transform: `translateY(${-offset}px) scale(1.04)` }}
+          className="absolute inset-0 h-full w-full object-fill opacity-[0.45]"
+          style={{ transform: `translateY(calc(80px - ${offset}px)) scale(1)` }}
+          // style={{ transform: `translateY(${-offset}px) scale(1)` }}
         />
+          {/* className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.45]"
+          // className="absolute inset-0 h-[118%] w-full object-cover object-top opacity-[0.65]"
+          style={{ transform: `translateY(${-offset}px) scale(1.04)` }}
+        /> */}
       </picture>
 
       <div className="damask absolute inset-0 opacity-50" />
