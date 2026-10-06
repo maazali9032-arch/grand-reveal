@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import archInterior from "@/assets/arch-interior.jpg";
+import archInterior2 from "@/assets/arch-interior2.webp";
 import { STRINGS } from "@/lib/i18n";
 import { tr, type Invitation, type Lang } from "@/lib/invitation-types";
 import { useReveal } from "@/hooks/use-scroll-progress";
@@ -38,14 +39,22 @@ function Backdrop() {
 
   return (
     <div aria-hidden="true" className="paper fixed inset-0 -z-10 overflow-hidden">
-      <img
-        src={archInterior}
-        alt=""
-        width={1536}
-        height={1024}
-        className="absolute inset-0 h-[118%] w-full object-cover object-top opacity-[0.22]"
-        style={{ transform: `translateY(${-offset}px) scale(1.04)` }}
-      />
+      <picture>
+        <source
+          media="(max-width: 1023px)"
+          srcSet={archInterior2}
+        />
+
+        <img
+          src={archInterior}
+          alt=""
+          width={1536}
+          height={1024}
+          className="absolute inset-0 h-[118%] w-full object-cover object-top opacity-[0.22]"
+          style={{ transform: `translateY(${-offset}px) scale(1.04)` }}
+        />
+      </picture>
+
       <div className="damask absolute inset-0 opacity-50" />
       <div className="absolute inset-0 bg-[radial-gradient(115%_80%_at_50%_20%,oklch(0.99_0.008_88/0.85),oklch(0.95_0.02_84/0.72)_55%,oklch(0.9_0.03_80/0.8)_100%)]" />
     </div>
